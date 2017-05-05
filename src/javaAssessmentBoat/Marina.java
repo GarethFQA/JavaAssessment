@@ -1,14 +1,14 @@
 package javaAssessmentBoat;
 
-//import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Marina {
 	
 	String name;
 	String address;
 	double capacity;
-	//Commented out as will not work until Boat is implemented
-	//ArrayList<Boat> boats = new ArrayList<Boat>;
+	ArrayList<Boat> registeredBoats = new ArrayList<Boat>();
 	
 	public Marina(String name, String address, double capacity)
 	{
@@ -35,25 +35,53 @@ public class Marina {
 	public void setCapactiy(double capacity) {
 		this.capacity = capacity;
 	}
-	/*
-	 * Commented out as will not work until Boat is implemented
-	 * 
-	public ArrayList<Boat> getBoats() {
-		return boats;
+
+	public ArrayList<Boat> getRegisteredBoats() 
+	{
+		return this.registeredBoats;
 	}
-	public void setBoats(ArrayList<Boat> boats) {
-		this.boats = boats;
-	}
-	
-		public String addBoat(Boat) {
-		this.boats.add(Boat)
-		return "Boat";
+
+	public void setRegisteredBoats(ArrayList<Boat> boats) 
+	{
+		this.registeredBoats = boats;
+		return;
 	}
 	
-		public String removeBoat(Boat) {
-		this.boats.remove(Boat)
+	public String removeBoat(Boat boat) 
+	{
+		this.registeredBoats.remove(boat);
 		return "Boat removed";
 	}
-	*/
-	
+
+	public String addBoat(Boat boat)
+	{
+		double totalOfBoatsSize = 0;
+		Iterator<Boat> iterator = registeredBoats.iterator();
+		while(iterator.hasNext())
+		{
+			Boat currentBoat = iterator.next();
+			totalOfBoatsSize += currentBoat.getSize(); 
+		}
+		
+		if(capacity - totalOfBoatsSize >= boat.getSize())
+		{
+			if(boat.boatHasAssingedPerson())
+			{
+				this.registeredBoats.add(boat);
+				return "Boat added";
+			}
+			else
+			{
+				return "No person assigned to boat, cannot register boat to Marina";
+			}
+		}
+		else
+		{
+			return "Not enough space in Marina, cannot register boat to Marina";
+		}
+	}
 }
+
+
+
+
