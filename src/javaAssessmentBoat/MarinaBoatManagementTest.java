@@ -233,5 +233,13 @@ public class MarinaBoatManagementTest {
 		
 		assertEquals("No person assigned to boat, cannot register boat to Marina",TYHA.assignBoatToMarina(testingBoat4, testingMarina1));		
 	}
+	
+	
+	@Test public void fileRead1()
+	{
+		MarinaBoatManagement TYHA = new MarinaBoatManagement();
+		
+		assertEquals("Finished",TYHA.populateObjectsFromFile("stage_5_input.txt"));		
+	}
 
 }

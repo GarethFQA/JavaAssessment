@@ -1,5 +1,8 @@
 package javaAssessmentBoat;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -13,6 +16,58 @@ public class MarinaBoatManagement {
 	public MarinaBoatManagement()
 	{
 		
+	}
+	
+	public String populateObjectsFromFile(String filename)
+	{
+		
+		
+		String fullFile = "";
+		
+		try(BufferedReader br = new BufferedReader(new FileReader(filename))) 
+		{
+			
+			String line = br.readLine();
+    		fullFile += line;
+    		line = br.readLine();
+		    while (line != null) 
+		    {
+		    	if (line.equals("Marinas"))
+		    	{
+		    		
+		    		
+		    	}
+	    		if (!line.equals("|")) 
+			    {		 
+	    			fullFile += "~" + line;
+		    		line = br.readLine();
+		    		System.out.println(fullFile);
+			    }
+	    		else if (line.equals("")) 
+			    {	
+		    		line = br.readLine();
+		    		System.out.println(fullFile);
+			    }
+	    		{
+		    		fullFile += line;
+		    		line = br.readLine();
+		    		fullFile += line;
+		    		line = br.readLine();
+		    		System.out.println(fullFile);
+	    		}
+
+
+		    }
+		    
+
+		    
+		}catch (IOException e) 
+		{
+			System.out.println("Unable to find file. \nObject with no people or animals created.\n");
+
+		}
+		
+		return "Finished";
 	}
 	
 	public String assignBoatToMarina(Boat boat, Marina marina)
