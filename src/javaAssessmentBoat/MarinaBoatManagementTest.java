@@ -149,5 +149,89 @@ public class MarinaBoatManagementTest {
 		
 		assertFalse(TYHA.isBoatAlreadyAssigned(testingBoat4));		
 	}
+	
+	
+	@Test public void assignBoatToMarina1()
+	{
+		MarinaBoatManagement TYHA = new MarinaBoatManagement();
+
+		Marina testingMarina1 = new Marina("Marina A", "The Port", 300);
+		Marina testingMarina2 = new Marina("Marina A", "The Port", 300);
+		
+		TYHA.addMarina(testingMarina1);
+		TYHA.addMarina(testingMarina2);
+		
+		Person testingPerson1 = new Person("Gareth", "Forman", Date.valueOf("1983-01-27"), "British");
+		Boat testingBoat1 = new Boat("Big Boat", "Japan", 2.0);
+		Boat testingBoat2 = new Boat("Bigger Boat", "China", 2.0);
+		Boat testingBoat3 = new Boat("Biggerest Boat", "America", 2.0);
+		Boat testingBoat4 = new Boat("Best Boat", "UK", 2.0);
+		
+		testingBoat1.addCrew(testingPerson1);
+		testingBoat2.addCrew(testingPerson1);
+		testingBoat3.addCrew(testingPerson1);
+		testingBoat4.addCrew(testingPerson1);
+		
+		testingMarina1.addBoat(testingBoat1);
+		testingMarina1.addBoat(testingBoat2);
+		testingMarina2.addBoat(testingBoat3);
+		
+		assertEquals("Boat added",TYHA.assignBoatToMarina(testingBoat4, testingMarina1));		
+	}
+	
+	@Test public void assignBoatToMarina2()
+	{
+		MarinaBoatManagement TYHA = new MarinaBoatManagement();
+
+		Marina testingMarina1 = new Marina("Marina A", "The Port", 300);
+		Marina testingMarina2 = new Marina("Marina A", "The Port", 300);
+		
+		TYHA.addMarina(testingMarina1);
+		TYHA.addMarina(testingMarina2);
+		
+		Person testingPerson1 = new Person("Gareth", "Forman", Date.valueOf("1983-01-27"), "British");
+		Boat testingBoat1 = new Boat("Big Boat", "Japan", 2.0);
+		Boat testingBoat2 = new Boat("Bigger Boat", "China", 2.0);
+		Boat testingBoat3 = new Boat("Biggerest Boat", "America", 2.0);
+		Boat testingBoat4 = new Boat("Best Boat", "UK", 2.0);
+		
+		testingBoat1.addCrew(testingPerson1);
+		testingBoat2.addCrew(testingPerson1);
+		testingBoat3.addCrew(testingPerson1);
+		testingBoat4.addCrew(testingPerson1);
+		
+		testingMarina1.addBoat(testingBoat1);
+		testingMarina1.addBoat(testingBoat2);
+		testingMarina2.addBoat(testingBoat3);
+		
+		assertEquals("Boat is already assigned to a Marina. Boat not assisgned",TYHA.assignBoatToMarina(testingBoat3, testingMarina1));		
+	}
+	
+	@Test public void assignBoatToMarina3()
+	{
+		MarinaBoatManagement TYHA = new MarinaBoatManagement();
+
+		Marina testingMarina1 = new Marina("Marina A", "The Port", 300);
+		Marina testingMarina2 = new Marina("Marina A", "The Port", 300);
+		
+		TYHA.addMarina(testingMarina1);
+		TYHA.addMarina(testingMarina2);
+		
+		Person testingPerson1 = new Person("Gareth", "Forman", Date.valueOf("1983-01-27"), "British");
+		Boat testingBoat1 = new Boat("Big Boat", "Japan", 2.0);
+		Boat testingBoat2 = new Boat("Bigger Boat", "China", 2.0);
+		Boat testingBoat3 = new Boat("Biggerest Boat", "America", 2.0);
+		Boat testingBoat4 = new Boat("Best Boat", "UK", 2.0);
+		
+		testingBoat1.addCrew(testingPerson1);
+		testingBoat2.addCrew(testingPerson1);
+		testingBoat3.addCrew(testingPerson1);
+		
+		testingMarina1.addBoat(testingBoat1);
+		testingMarina1.addBoat(testingBoat2);
+		testingMarina2.addBoat(testingBoat3);
+		
+		assertEquals("No person assigned to boat, cannot register boat to Marina",TYHA.assignBoatToMarina(testingBoat4, testingMarina1));		
+	}
 
 }

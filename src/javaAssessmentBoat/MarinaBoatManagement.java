@@ -15,10 +15,13 @@ public class MarinaBoatManagement {
 		
 	}
 	
-	public String assignBoatToMarina(Boat boat)
+	public String assignBoatToMarina(Boat boat, Marina marina)
 	{
-		
-		return "";
+		if(!isBoatAlreadyAssigned(boat))
+		{
+			return marina.addBoat(boat);
+		}
+		return "Boat is already assigned to a Marina. Boat not assisgned";
 	}
 	
 	public boolean isBoatAlreadyAssigned(Boat boat)
